@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FF1CC2A1269E26D500444B1A /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FF1CC2A0269E26D500444B1A /* uxn.c */; };
+		FF35118E269E30DB00F852B2 /* UxnBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FF35118D269E30DB00F852B2 /* UxnBridge.m */; };
+		FF351190269E339E00F852B2 /* hello.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF35118F269E339E00F852B2 /* hello.rom */; };
 		FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C072E269E237A0040F453 /* AppDelegate.swift */; };
 		FF4C0733269E237A0040F453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0732269E237A0040F453 /* ViewController.swift */; };
 		FF4C0736269E237A0040F453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4C0734269E237A0040F453 /* Main.storyboard */; };
@@ -38,6 +40,9 @@
 		FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UxniOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		FF1CC29F269E26D500444B1A /* uxn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uxn.h; path = uxn/src/uxn.h; sourceTree = SOURCE_ROOT; };
 		FF1CC2A0269E26D500444B1A /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
+		FF35118C269E302300F852B2 /* UxnBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UxnBridge.h; sourceTree = "<group>"; };
+		FF35118D269E30DB00F852B2 /* UxnBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UxnBridge.m; sourceTree = "<group>"; };
+		FF35118F269E339E00F852B2 /* hello.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = hello.rom; sourceTree = "<group>"; };
 		FF4C072B269E237A0040F453 /* UxniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UxniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4C072E269E237A0040F453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4C0732269E237A0040F453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +89,8 @@
 				FF1CC2A0269E26D500444B1A /* uxn.c */,
 				FF1CC29F269E26D500444B1A /* uxn.h */,
 				FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */,
+				FF35118C269E302300F852B2 /* UxnBridge.h */,
+				FF35118D269E30DB00F852B2 /* UxnBridge.m */,
 			);
 			path = Uxn;
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 		FF4C072D269E237A0040F453 /* UxniOS */ = {
 			isa = PBXGroup;
 			children = (
+				FF35118F269E339E00F852B2 /* hello.rom */,
 				FF1CC29D269E26C200444B1A /* Uxn */,
 				FF4C0732269E237A0040F453 /* ViewController.swift */,
 				FF4C072E269E237A0040F453 /* AppDelegate.swift */,
@@ -245,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4C073B269E23800040F453 /* LaunchScreen.storyboard in Resources */,
+				FF351190269E339E00F852B2 /* hello.rom in Resources */,
 				FF4C0738269E23800040F453 /* Assets.xcassets in Resources */,
 				FF4C0736269E237A0040F453 /* Main.storyboard in Resources */,
 			);
@@ -273,6 +282,7 @@
 			files = (
 				FF4C0733269E237A0040F453 /* ViewController.swift in Sources */,
 				FF1CC2A1269E26D500444B1A /* uxn.c in Sources */,
+				FF35118E269E30DB00F852B2 /* UxnBridge.m in Sources */,
 				FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
