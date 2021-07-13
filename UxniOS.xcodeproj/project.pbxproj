@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FF1CC2A1269E26D500444B1A /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FF1CC2A0269E26D500444B1A /* uxn.c */; };
 		FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C072E269E237A0040F453 /* AppDelegate.swift */; };
-		FF4C0731269E237A0040F453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0730269E237A0040F453 /* SceneDelegate.swift */; };
 		FF4C0733269E237A0040F453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0732269E237A0040F453 /* ViewController.swift */; };
 		FF4C0736269E237A0040F453 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4C0734269E237A0040F453 /* Main.storyboard */; };
 		FF4C0738269E23800040F453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4C0737269E23800040F453 /* Assets.xcassets */; };
@@ -41,7 +40,6 @@
 		FF1CC2A0269E26D500444B1A /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
 		FF4C072B269E237A0040F453 /* UxniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UxniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4C072E269E237A0040F453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FF4C0730269E237A0040F453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FF4C0732269E237A0040F453 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF4C0735269E237A0040F453 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF4C0737269E23800040F453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 			children = (
 				FF1CC29D269E26C200444B1A /* Uxn */,
 				FF4C0732269E237A0040F453 /* ViewController.swift */,
-				FF4C0730269E237A0040F453 /* SceneDelegate.swift */,
 				FF4C072E269E237A0040F453 /* AppDelegate.swift */,
 				FF4C0734269E237A0040F453 /* Main.storyboard */,
 				FF4C0737269E23800040F453 /* Assets.xcassets */,
@@ -277,7 +274,6 @@
 				FF4C0733269E237A0040F453 /* ViewController.swift in Sources */,
 				FF1CC2A1269E26D500444B1A /* uxn.c in Sources */,
 				FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */,
-				FF4C0731269E237A0040F453 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +453,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5B635R5MU;
 				INFOPLIST_FILE = UxniOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -479,6 +476,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5B635R5MU;
 				INFOPLIST_FILE = UxniOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
