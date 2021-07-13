@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF1CC2A1269E26D500444B1A /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FF1CC2A0269E26D500444B1A /* uxn.c */; };
 		FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C072E269E237A0040F453 /* AppDelegate.swift */; };
 		FF4C0731269E237A0040F453 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0730269E237A0040F453 /* SceneDelegate.swift */; };
 		FF4C0733269E237A0040F453 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0732269E237A0040F453 /* ViewController.swift */; };
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UxniOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		FF1CC29F269E26D500444B1A /* uxn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uxn.h; path = uxn/src/uxn.h; sourceTree = SOURCE_ROOT; };
+		FF1CC2A0269E26D500444B1A /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
 		FF4C072B269E237A0040F453 /* UxniOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UxniOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4C072E269E237A0040F453 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4C0730269E237A0040F453 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF1CC29D269E26C200444B1A /* Uxn */ = {
+			isa = PBXGroup;
+			children = (
+				FF1CC2A0269E26D500444B1A /* uxn.c */,
+				FF1CC29F269E26D500444B1A /* uxn.h */,
+				FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */,
+			);
+			path = Uxn;
+			sourceTree = "<group>";
+		};
 		FF4C0722269E237A0040F453 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +113,10 @@
 		FF4C072D269E237A0040F453 /* UxniOS */ = {
 			isa = PBXGroup;
 			children = (
-				FF4C072E269E237A0040F453 /* AppDelegate.swift */,
-				FF4C0730269E237A0040F453 /* SceneDelegate.swift */,
+				FF1CC29D269E26C200444B1A /* Uxn */,
 				FF4C0732269E237A0040F453 /* ViewController.swift */,
+				FF4C0730269E237A0040F453 /* SceneDelegate.swift */,
+				FF4C072E269E237A0040F453 /* AppDelegate.swift */,
 				FF4C0734269E237A0040F453 /* Main.storyboard */,
 				FF4C0737269E23800040F453 /* Assets.xcassets */,
 				FF4C0739269E23800040F453 /* LaunchScreen.storyboard */,
@@ -195,6 +210,7 @@
 				TargetAttributes = {
 					FF4C072A269E237A0040F453 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					FF4C0740269E23800040F453 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -259,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4C0733269E237A0040F453 /* ViewController.swift in Sources */,
+				FF1CC2A1269E26D500444B1A /* uxn.c in Sources */,
 				FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */,
 				FF4C0731269E237A0040F453 /* SceneDelegate.swift in Sources */,
 			);
@@ -436,6 +453,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5B635R5MU;
 				INFOPLIST_FILE = UxniOS/Info.plist;
@@ -445,6 +463,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.kylestewart.UxniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/Uxn/UxniOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M5B635R5MU;
 				INFOPLIST_FILE = UxniOS/Info.plist;
@@ -464,6 +485,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.kylestewart.UxniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/Uxn/UxniOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
