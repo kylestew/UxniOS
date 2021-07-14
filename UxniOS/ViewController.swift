@@ -11,4 +11,15 @@ class ViewController: UIViewController {
         uxn.load(rom)
     }
 
+    @IBOutlet weak var renderView: UIView!
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if let imageRef = uxn.redraw() {
+            let cgImage = imageRef.takeUnretainedValue()
+            renderView.layer.contents = cgImage
+        }
+    }
+
 }

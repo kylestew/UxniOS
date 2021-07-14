@@ -12,51 +12,6 @@ static Device *devscreen;
 
 static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 
-/*
- static int
- init(void)
- {
-     SDL_AudioSpec as;
-     if(!initppu(&ppu, 64, 40))
-         return error("PPU", "Init failure");
-     gRect.x = PAD;
-     gRect.y = PAD;
-     gRect.w = ppu.width;
-     gRect.h = ppu.height;
-     if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
-         return error("Init", SDL_GetError());
-     gWindow = SDL_CreateWindow("Uxn", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, (ppu.width + PAD * 2) * zoom, (ppu.height + PAD * 2) * zoom, SDL_WINDOW_SHOWN);
-     if(gWindow == NULL)
-         return error("Window", SDL_GetError());
-     gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
-     if(gRenderer == NULL)
-         return error("Renderer", SDL_GetError());
-     SDL_RenderSetLogicalSize(gRenderer, ppu.width + PAD * 2, ppu.height + PAD * 2);
-     bgTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, ppu.width + PAD * 2, ppu.height + PAD * 2);
-     if(bgTexture == NULL || SDL_SetTextureBlendMode(bgTexture, SDL_BLENDMODE_NONE))
-         return error("Texture", SDL_GetError());
-     fgTexture = SDL_CreateTexture(gRenderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, ppu.width + PAD * 2, ppu.height + PAD * 2);
-     if(fgTexture == NULL || SDL_SetTextureBlendMode(fgTexture, SDL_BLENDMODE_BLEND))
-         return error("Texture", SDL_GetError());
-     SDL_UpdateTexture(bgTexture, NULL, ppu.bg.pixels, 4);
-     SDL_UpdateTexture(fgTexture, NULL, ppu.fg.pixels, 4);
-     SDL_StartTextInput();
-     SDL_ShowCursor(SDL_DISABLE);
-     SDL_zero(as);
-     as.freq = SAMPLE_FREQUENCY;
-     as.format = AUDIO_S16;
-     as.channels = 2;
-     as.callback = audio_callback;
-     as.samples = 512;
-     as.userdata = NULL;
-     audio_id = SDL_OpenAudioDevice(NULL, 0, &as, NULL, 0);
-     if(!audio_id)
-         return error("Audio", SDL_GetError());
-     SDL_PauseAudioDevice(audio_id, 0);
-     return 1;
- }
- */
-
 - (instancetype)init {
     if (self == [super init]) {
 
@@ -69,33 +24,47 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
     return self;
 }
 
-/*
- static void
- quit(void)
- {
-     free(ppu.fg.pixels);
-     free(ppu.bg.pixels);
-     SDL_UnlockAudioDevice(audio_id);
-     SDL_DestroyTexture(bgTexture);
-     bgTexture = NULL;
-     SDL_DestroyTexture(fgTexture);
-     fgTexture = NULL;
-     SDL_DestroyRenderer(gRenderer);
-     gRenderer = NULL;
-     SDL_DestroyWindow(gWindow);
-     gWindow = NULL;
-     SDL_Quit();
-     exit(0);
- }
- */
-
 - (void)dealloc {
 }
 
 #pragma mark - Graphics
 
-static void redraw() {
+- (CGImageRef)redraw {
 
+    int width = ppu.width;
+    int height = ppu.height;
+
+    CGImageRef image;
+    CFDataRef bridgedData;
+    CGDataProviderRef dataProvider;
+    CGColorSpaceRef colorSpace;
+    CGBitmapInfo infoFlags = kCGImageAlphaFirst; // ARGB
+
+    // Get a color space
+    colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
+
+    NSData* imgData = [[NSData alloc] initWithBytes:ppu.bg.pixels length:ppu.width * ppu.height * sizeof(UInt32)];
+
+    bridgedData = (__bridge CFDataRef)imgData;
+
+    dataProvider = CGDataProviderCreateWithCFData(bridgedData);
+
+    // Given size_t width, height which you should already have somehow
+    image = CGImageCreate(
+        width, height, /* bpc */ 8, /* bpp */ 32, /* pitch */ width * 4,
+        colorSpace, infoFlags,
+        dataProvider, /* decode array */ NULL, /* interpolate? */ TRUE,
+        kCGRenderingIntentDefault /* adjust intent according to use */
+      );
+
+    // Release things the image took ownership of.
+    CGDataProviderRelease(dataProvider);
+    CGColorSpaceRelease(colorSpace);
+
+//    UIImage *maskedImage = [UIImage imageWithCGImage:image];
+
+    // TODO: there is most likely a leak here
+    return image;
 }
 
 #pragma mark - Devices
@@ -133,12 +102,7 @@ static void screen_talk(Device *d, Uint8 b0, Uint8 w) {
     }
 }
 
-#pragma mark - Start & Loop
-
-static void run() {
-    evaluxn(&uxn, 0x0100);
-    redraw();
-}
+#pragma mark - Load & Setup
 
 - (BOOL)load:(NSString *)romFile {
     // TODO: these require '&' and I'm not sure why
@@ -155,7 +119,7 @@ static void run() {
     mempoke16(devscreen->dat, 2, ppu.hor * 8);
     mempoke16(devscreen->dat, 4, ppu.ver * 8);
 
-    run();
+    evaluxn(&uxn, 0x0100);
 
     return YES;
 }
