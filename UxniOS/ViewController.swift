@@ -7,8 +7,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let file = "hello.rom"
-        uxn.load(file)
+        let rom = Bundle.main.path(forResource: "screen", ofType: "rom")!
+        uxn.load(rom)
     }
 
 }

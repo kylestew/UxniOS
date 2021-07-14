@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF1CC2A1269E26D500444B1A /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FF1CC2A0269E26D500444B1A /* uxn.c */; };
 		FF35118E269E30DB00F852B2 /* UxnBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = FF35118D269E30DB00F852B2 /* UxnBridge.m */; };
 		FF351190269E339E00F852B2 /* hello.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF35118F269E339E00F852B2 /* hello.rom */; };
 		FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C072E269E237A0040F453 /* AppDelegate.swift */; };
@@ -17,6 +16,11 @@
 		FF4C073B269E23800040F453 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4C0739269E23800040F453 /* LaunchScreen.storyboard */; };
 		FF4C0746269E23800040F453 /* UxniOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0745269E23800040F453 /* UxniOSTests.swift */; };
 		FF4C0751269E23800040F453 /* UxniOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0750269E23800040F453 /* UxniOSUITests.swift */; };
+		FF6831D1269E8B1C007A84F2 /* screen.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF6831D0269E8B1C007A84F2 /* screen.rom */; };
+		FF6831D3269E8DB2007A84F2 /* piano.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF6831D2269E8DB2007A84F2 /* piano.rom */; };
+		FFF34708269EB827006F6EA4 /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF34707269EB827006F6EA4 /* uxn.c */; };
+		FFF3470E269EB848006F6EA4 /* apu.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF3470B269EB848006F6EA4 /* apu.c */; };
+		FFF3470F269EB848006F6EA4 /* ppu.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF3470C269EB848006F6EA4 /* ppu.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +42,6 @@
 
 /* Begin PBXFileReference section */
 		FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UxniOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		FF1CC29F269E26D500444B1A /* uxn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uxn.h; path = uxn/src/uxn.h; sourceTree = SOURCE_ROOT; };
-		FF1CC2A0269E26D500444B1A /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
 		FF35118C269E302300F852B2 /* UxnBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UxnBridge.h; sourceTree = "<group>"; };
 		FF35118D269E30DB00F852B2 /* UxnBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UxnBridge.m; sourceTree = "<group>"; };
 		FF35118F269E339E00F852B2 /* hello.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = hello.rom; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 		FF4C074C269E23800040F453 /* UxniOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UxniOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4C0750269E23800040F453 /* UxniOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UxniOSUITests.swift; sourceTree = "<group>"; };
 		FF4C0752269E23800040F453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF6831D0269E8B1C007A84F2 /* screen.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = screen.rom; sourceTree = "<group>"; };
+		FF6831D2269E8DB2007A84F2 /* piano.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.rom; sourceTree = "<group>"; };
+		FFF34706269EB827006F6EA4 /* uxn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uxn.h; path = uxn/src/uxn.h; sourceTree = SOURCE_ROOT; };
+		FFF34707269EB827006F6EA4 /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
+		FFF3470A269EB848006F6EA4 /* ppu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ppu.h; path = uxn/src/devices/ppu.h; sourceTree = SOURCE_ROOT; };
+		FFF3470B269EB848006F6EA4 /* apu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = apu.c; path = uxn/src/devices/apu.c; sourceTree = SOURCE_ROOT; };
+		FFF3470C269EB848006F6EA4 /* ppu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ppu.c; path = uxn/src/devices/ppu.c; sourceTree = SOURCE_ROOT; };
+		FFF3470D269EB848006F6EA4 /* apu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = apu.h; path = uxn/src/devices/apu.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,18 +93,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FF1CC29D269E26C200444B1A /* Uxn */ = {
-			isa = PBXGroup;
-			children = (
-				FF1CC2A0269E26D500444B1A /* uxn.c */,
-				FF1CC29F269E26D500444B1A /* uxn.h */,
-				FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */,
-				FF35118C269E302300F852B2 /* UxnBridge.h */,
-				FF35118D269E30DB00F852B2 /* UxnBridge.m */,
-			);
-			path = Uxn;
-			sourceTree = "<group>";
-		};
 		FF4C0722269E237A0040F453 = {
 			isa = PBXGroup;
 			children = (
@@ -118,8 +116,11 @@
 		FF4C072D269E237A0040F453 /* UxniOS */ = {
 			isa = PBXGroup;
 			children = (
-				FF35118F269E339E00F852B2 /* hello.rom */,
-				FF1CC29D269E26C200444B1A /* Uxn */,
+				FFF34705269EB817006F6EA4 /* uxn */,
+				FFF346FD269EB6DE006F6EA4 /* roms */,
+				FF1CC29E269E26D400444B1A /* UxniOS-Bridging-Header.h */,
+				FF35118C269E302300F852B2 /* UxnBridge.h */,
+				FF35118D269E30DB00F852B2 /* UxnBridge.m */,
 				FF4C0732269E237A0040F453 /* ViewController.swift */,
 				FF4C072E269E237A0040F453 /* AppDelegate.swift */,
 				FF4C0734269E237A0040F453 /* Main.storyboard */,
@@ -146,6 +147,37 @@
 				FF4C0752269E23800040F453 /* Info.plist */,
 			);
 			path = UxniOSUITests;
+			sourceTree = "<group>";
+		};
+		FFF346FD269EB6DE006F6EA4 /* roms */ = {
+			isa = PBXGroup;
+			children = (
+				FF6831D2269E8DB2007A84F2 /* piano.rom */,
+				FF6831D0269E8B1C007A84F2 /* screen.rom */,
+				FF35118F269E339E00F852B2 /* hello.rom */,
+			);
+			path = roms;
+			sourceTree = "<group>";
+		};
+		FFF34705269EB817006F6EA4 /* uxn */ = {
+			isa = PBXGroup;
+			children = (
+				FFF34709269EB83B006F6EA4 /* devices */,
+				FFF34707269EB827006F6EA4 /* uxn.c */,
+				FFF34706269EB827006F6EA4 /* uxn.h */,
+			);
+			path = uxn;
+			sourceTree = "<group>";
+		};
+		FFF34709269EB83B006F6EA4 /* devices */ = {
+			isa = PBXGroup;
+			children = (
+				FFF3470B269EB848006F6EA4 /* apu.c */,
+				FFF3470D269EB848006F6EA4 /* apu.h */,
+				FFF3470C269EB848006F6EA4 /* ppu.c */,
+				FFF3470A269EB848006F6EA4 /* ppu.h */,
+			);
+			path = devices;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4C073B269E23800040F453 /* LaunchScreen.storyboard in Resources */,
+				FF6831D1269E8B1C007A84F2 /* screen.rom in Resources */,
+				FF6831D3269E8DB2007A84F2 /* piano.rom in Resources */,
 				FF351190269E339E00F852B2 /* hello.rom in Resources */,
 				FF4C0738269E23800040F453 /* Assets.xcassets in Resources */,
 				FF4C0736269E237A0040F453 /* Main.storyboard in Resources */,
@@ -281,7 +315,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4C0733269E237A0040F453 /* ViewController.swift in Sources */,
-				FF1CC2A1269E26D500444B1A /* uxn.c in Sources */,
+				FFF3470E269EB848006F6EA4 /* apu.c in Sources */,
+				FFF34708269EB827006F6EA4 /* uxn.c in Sources */,
+				FFF3470F269EB848006F6EA4 /* ppu.c in Sources */,
 				FF35118E269E30DB00F852B2 /* UxnBridge.m in Sources */,
 				FF4C072F269E237A0040F453 /* AppDelegate.swift in Sources */,
 			);
@@ -470,7 +506,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.kylestewart.UxniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/Uxn/UxniOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/UxniOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -493,7 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.kylestewart.UxniOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/Uxn/UxniOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "UxniOS/UxniOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
