@@ -45,7 +45,7 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
     CGDataProviderRef dataProviderBG;
     CGDataProviderRef dataProviderFG;
     CGColorSpaceRef colorSpace;
-    CGBitmapInfo infoFlags = (CGBitmapInfo)kCGImageAlphaFirst; // ARGB
+    CGBitmapInfo infoFlags = (CGBitmapInfo)kCGImageAlphaFirst | kCGBitmapByteOrder32Little; // ARGB
 
     colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 
