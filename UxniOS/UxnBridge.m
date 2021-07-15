@@ -14,9 +14,6 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 
 - (instancetype)init {
     if (self == [super init]) {
-
-        // TODO: setup windowing access here
-
         if(!initppu(&ppu, 64, 40))
             assert(false);
 //            return error("PPU", "Init failure");
@@ -29,42 +26,55 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 
 #pragma mark - Graphics
 
-- (CGImageRef)redraw {
+- (CGSize)screenSize {
+    CGFloat width = ppu.hor * 8;
+    CGFloat height = ppu.ver * 8;
+    return CGSizeMake(width, height);
+}
+
+- (void)redraw {
+    if (!reqdraw) return;
+    reqdraw = 0;
 
     int width = ppu.width;
     int height = ppu.height;
+    int length = width * height * sizeof(UInt32);
 
-    CGImageRef image;
-    CFDataRef bridgedData;
-    CGDataProviderRef dataProvider;
+    CFDataRef bridgedDataBG;
+    CFDataRef bridgedDataFG;
+    CGDataProviderRef dataProviderBG;
+    CGDataProviderRef dataProviderFG;
     CGColorSpaceRef colorSpace;
-    CGBitmapInfo infoFlags = kCGImageAlphaFirst; // ARGB
+    CGBitmapInfo infoFlags = (CGBitmapInfo)kCGImageAlphaFirst; // ARGB
 
-    // Get a color space
     colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
 
-    NSData* imgData = [[NSData alloc] initWithBytes:ppu.bg.pixels length:ppu.width * ppu.height * sizeof(UInt32)];
+    NSData* bgImageData = [[NSData alloc] initWithBytes: ppu.bg.pixels length: length];
+    NSData* fgImageData = [[NSData alloc] initWithBytes: ppu.fg.pixels length: length];
 
-    bridgedData = (__bridge CFDataRef)imgData;
+    bridgedDataBG = (__bridge CFDataRef)bgImageData;
+    bridgedDataFG = (__bridge CFDataRef)fgImageData;
 
-    dataProvider = CGDataProviderCreateWithCFData(bridgedData);
+    dataProviderBG = CGDataProviderCreateWithCFData(bridgedDataBG);
+    dataProviderFG = CGDataProviderCreateWithCFData(bridgedDataFG);
 
-    // Given size_t width, height which you should already have somehow
-    image = CGImageCreate(
-        width, height, /* bpc */ 8, /* bpp */ 32, /* pitch */ width * 4,
-        colorSpace, infoFlags,
-        dataProvider, /* decode array */ NULL, /* interpolate? */ TRUE,
-        kCGRenderingIntentDefault /* adjust intent according to use */
-      );
+    _bgImageRef = CGImageCreate(
+                                width, height, /* bpc */ 8, /* bpp */ 32, /* pitch */ width * 4,
+                                colorSpace, infoFlags,
+                                dataProviderBG, /* decode array */ NULL, /* interpolate? */ TRUE,
+                                kCGRenderingIntentDefault /* adjust intent according to use */
+                                );
+    _fgImageRef = CGImageCreate(
+                                width, height, /* bpc */ 8, /* bpp */ 32, /* pitch */ width * 4,
+                                colorSpace, infoFlags,
+                                dataProviderFG, /* decode array */ NULL, /* interpolate? */ TRUE,
+                                kCGRenderingIntentDefault /* adjust intent according to use */
+                                );
 
     // Release things the image took ownership of.
-    CGDataProviderRelease(dataProvider);
+    CGDataProviderRelease(dataProviderBG);
+    CGDataProviderRelease(dataProviderFG);
     CGColorSpaceRelease(colorSpace);
-
-//    UIImage *maskedImage = [UIImage imageWithCGImage:image];
-
-    // TODO: there is most likely a leak here
-    return image;
 }
 
 #pragma mark - Devices
