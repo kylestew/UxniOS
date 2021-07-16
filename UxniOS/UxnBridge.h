@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGSize)screenSize;
 - (void)redraw;
 
+- (void)domouse:(CGPoint)position touchdown:(BOOL)touchdown;
+
 @end
 
 NS_ASSUME_NONNULL_END

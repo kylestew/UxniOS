@@ -8,7 +8,7 @@
 
 static Uxn uxn;
 static Ppu ppu;
-static Device *devscreen;
+static Device *devscreen, *devmouse;
 
 static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 
@@ -24,6 +24,12 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 - (void)dealloc {
 }
 
+#pragma mark - Helpers
+
+static int clamp(int val, int min, int max) {
+    return (val >= min) ? (val <= max) ? val : max : min;
+}
+
 #pragma mark - Graphics
 
 - (CGSize)screenSize {
@@ -33,6 +39,9 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
 }
 
 - (void)redraw {
+    // determine if screen needs refresh
+    evaluxn(&uxn, mempeek16(devscreen->dat, 0));
+
     if (!reqdraw) return;
     reqdraw = 0;
 
@@ -77,6 +86,32 @@ static Uint8 zoom = 0, debug = 0, reqdraw = 0;
     CGColorSpaceRelease(colorSpace);
 }
 
+#pragma mark - Input
+
+- (void)domouse:(CGPoint)position touchdown:(BOOL)touchdown {
+    Uint16 x = clamp(position.x, 0, ppu.hor * 8 - 1);
+    Uint16 y = clamp(position.y, 0, ppu.ver * 8 - 1);
+
+    mempoke16(devmouse->dat, 0x2, x);
+    mempoke16(devmouse->dat, 0x4, y);
+
+    /*
+    switch(event->button.button) {
+    case SDL_BUTTON_LEFT: flag = 0x01; break;
+    case SDL_BUTTON_RIGHT: flag = 0x10; break;
+    }
+     */
+
+    Uint8 flag = 0x00;
+    if (touchdown) {
+        devmouse->dat[6] |= flag;
+    } else {
+        devmouse->dat[6] &= (~flag);
+    }
+
+    evaluxn(&uxn, mempeek16(devmouse->dat, 0));
+}
+
 #pragma mark - Devices
 
 static void system_talk(Device *d, Uint8 b0, Uint8 w) {
@@ -112,10 +147,32 @@ static void screen_talk(Device *d, Uint8 b0, Uint8 w) {
     }
 }
 
+static void datetime_talk(Device *d, Uint8 b0, Uint8 w) {
+    time_t seconds = time(NULL);
+    struct tm *t = localtime(&seconds);
+    t->tm_year += 1900;
+    mempoke16(d->dat, 0x0, t->tm_year);
+    d->dat[0x2] = t->tm_mon;
+    d->dat[0x3] = t->tm_mday;
+    d->dat[0x4] = t->tm_hour;
+    d->dat[0x5] = t->tm_min;
+    d->dat[0x6] = t->tm_sec;
+    d->dat[0x7] = t->tm_wday;
+    mempoke16(d->dat, 0x08, t->tm_yday);
+    d->dat[0xa] = t->tm_isdst;
+    (void)b0;
+    (void)w;
+}
+
+static void nil_talk(Device *d, Uint8 b0, Uint8 w) {
+    (void)d;
+    (void)b0;
+    (void)w;
+}
+
 #pragma mark - Load & Setup
 
 - (BOOL)load:(NSString *)romFile {
-    // TODO: these require '&' and I'm not sure why
     if (!bootuxn(&uxn))
         return NO;
     if (!loaduxn(&uxn, [romFile UTF8String]))
@@ -124,6 +181,19 @@ static void screen_talk(Device *d, Uint8 b0, Uint8 w) {
     portuxn(&uxn, 0x0, "system", system_talk);
     portuxn(&uxn, 0x1, "console", console_talk);
     devscreen = portuxn(&uxn, 0x2, "screen", screen_talk);
+    // 0x3 - audio0
+    // 0x4 - audio1
+    // 0x5 - audio2
+    // 0x6 - audio3
+    // 0x7 ----
+    // 0x8 - controller
+    devmouse = portuxn(&uxn, 0x9, "mouse", nil_talk);
+    // 0xa - file
+    portuxn(&uxn, 0xb, "datetime", datetime_talk);
+    // 0xc ----
+    // 0xd ----
+    // 0xe ----
+    // 0xf ----
 
     /* Write screen size to dev/screen */
     mempoke16(devscreen->dat, 2, ppu.hor * 8);

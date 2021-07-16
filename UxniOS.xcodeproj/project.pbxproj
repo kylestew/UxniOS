@@ -18,6 +18,9 @@
 		FF4C0751269E23800040F453 /* UxniOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4C0750269E23800040F453 /* UxniOSUITests.swift */; };
 		FF6831D1269E8B1C007A84F2 /* screen.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF6831D0269E8B1C007A84F2 /* screen.rom */; };
 		FF6831D3269E8DB2007A84F2 /* piano.rom in Resources */ = {isa = PBXBuildFile; fileRef = FF6831D2269E8DB2007A84F2 /* piano.rom */; };
+		FFD2DDAC26A1C28E00AD30FC /* polycat.rom in Resources */ = {isa = PBXBuildFile; fileRef = FFD2DDAB26A1C28E00AD30FC /* polycat.rom */; };
+		FFD2DDAE26A1C48300AD30FC /* life.rom in Resources */ = {isa = PBXBuildFile; fileRef = FFD2DDAD26A1C48300AD30FC /* life.rom */; };
+		FFD2DDB026A1C6C400AD30FC /* bifurcan.rom in Resources */ = {isa = PBXBuildFile; fileRef = FFD2DDAF26A1C6C400AD30FC /* bifurcan.rom */; };
 		FFF34708269EB827006F6EA4 /* uxn.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF34707269EB827006F6EA4 /* uxn.c */; };
 		FFF3470E269EB848006F6EA4 /* apu.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF3470B269EB848006F6EA4 /* apu.c */; };
 		FFF3470F269EB848006F6EA4 /* ppu.c in Sources */ = {isa = PBXBuildFile; fileRef = FFF3470C269EB848006F6EA4 /* ppu.c */; };
@@ -60,6 +63,9 @@
 		FF4C0752269E23800040F453 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF6831D0269E8B1C007A84F2 /* screen.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = screen.rom; sourceTree = "<group>"; };
 		FF6831D2269E8DB2007A84F2 /* piano.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = piano.rom; sourceTree = "<group>"; };
+		FFD2DDAB26A1C28E00AD30FC /* polycat.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = polycat.rom; sourceTree = "<group>"; };
+		FFD2DDAD26A1C48300AD30FC /* life.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = life.rom; sourceTree = "<group>"; };
+		FFD2DDAF26A1C6C400AD30FC /* bifurcan.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = bifurcan.rom; sourceTree = "<group>"; };
 		FFF34706269EB827006F6EA4 /* uxn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = uxn.h; path = uxn/src/uxn.h; sourceTree = SOURCE_ROOT; };
 		FFF34707269EB827006F6EA4 /* uxn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uxn.c; path = uxn/src/uxn.c; sourceTree = SOURCE_ROOT; };
 		FFF3470A269EB848006F6EA4 /* ppu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ppu.h; path = uxn/src/devices/ppu.h; sourceTree = SOURCE_ROOT; };
@@ -152,6 +158,9 @@
 		FFF346FD269EB6DE006F6EA4 /* roms */ = {
 			isa = PBXGroup;
 			children = (
+				FFD2DDAF26A1C6C400AD30FC /* bifurcan.rom */,
+				FFD2DDAD26A1C48300AD30FC /* life.rom */,
+				FFD2DDAB26A1C28E00AD30FC /* polycat.rom */,
 				FF6831D2269E8DB2007A84F2 /* piano.rom */,
 				FF6831D0269E8B1C007A84F2 /* screen.rom */,
 				FF35118F269E339E00F852B2 /* hello.rom */,
@@ -287,6 +296,9 @@
 				FF4C073B269E23800040F453 /* LaunchScreen.storyboard in Resources */,
 				FF6831D1269E8B1C007A84F2 /* screen.rom in Resources */,
 				FF6831D3269E8DB2007A84F2 /* piano.rom in Resources */,
+				FFD2DDAC26A1C28E00AD30FC /* polycat.rom in Resources */,
+				FFD2DDB026A1C6C400AD30FC /* bifurcan.rom in Resources */,
+				FFD2DDAE26A1C48300AD30FC /* life.rom in Resources */,
 				FF351190269E339E00F852B2 /* hello.rom in Resources */,
 				FF4C0738269E23800040F453 /* Assets.xcassets in Resources */,
 				FF4C0736269E237A0040F453 /* Main.storyboard in Resources */,
