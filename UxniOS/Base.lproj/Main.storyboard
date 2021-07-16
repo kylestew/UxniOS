@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,28 +13,29 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UxniOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt2-k9-bDe">
-                                <rect key="frame" x="47" y="192" width="320" height="512"/>
+                                <rect key="frame" x="117" y="0.0" width="662" height="414"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="DVL-ix-tji"/>
-                                    <constraint firstAttribute="height" constant="512" id="qFl-E8-adJ"/>
+                                    <constraint firstAttribute="width" secondItem="Lt2-k9-bDe" secondAttribute="height" multiplier="512:320" id="den-Wb-RYg"/>
                                 </constraints>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7N-wq-wpi">
-                                <rect key="frame" x="47" y="192" width="320" height="512"/>
+                                <rect key="frame" x="117" y="0.0" width="662" height="414"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Lt2-k9-bDe" secondAttribute="bottom" id="259-rB-GSN"/>
                             <constraint firstItem="k7N-wq-wpi" firstAttribute="height" secondItem="Lt2-k9-bDe" secondAttribute="height" id="B87-ai-0aL"/>
                             <constraint firstItem="k7N-wq-wpi" firstAttribute="width" secondItem="Lt2-k9-bDe" secondAttribute="width" id="Gln-aB-2Ig"/>
                             <constraint firstItem="k7N-wq-wpi" firstAttribute="centerX" secondItem="Lt2-k9-bDe" secondAttribute="centerX" id="Pd6-Wz-EXf"/>
+                            <constraint firstItem="Lt2-k9-bDe" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="TYu-OT-4SG"/>
                             <constraint firstItem="Lt2-k9-bDe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="VRw-8K-kr1"/>
                             <constraint firstItem="k7N-wq-wpi" firstAttribute="centerY" secondItem="Lt2-k9-bDe" secondAttribute="centerY" id="Wu4-jz-xT5"/>
                             <constraint firstItem="Lt2-k9-bDe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XXS-Oi-EHo"/>

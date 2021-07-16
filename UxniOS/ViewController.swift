@@ -22,12 +22,11 @@ class ViewController: UIViewController {
         bgRenderView.layer.contents = uxn.bgImageRef
         fgRenderView.layer.contents = uxn.fgImageRef
 
-        let size = uxn.screenSize()
-
-        print(bgRenderView.frame, bgRenderView.layer.frame, size)
-
-        bgRenderView.layer.bounds = CGRect(origin: .zero, size: size)
-        fgRenderView.layer.bounds = CGRect(origin: .zero, size: size)
+        // currently the screen size is hardwired in position and landscape orientation
+//        let size = uxn.screenSize()
+//        print(bgRenderView.frame, bgRenderView.layer.frame, size)
+//        bgRenderView.layer.bounds = CGRect(origin: .zero, size: size)
+//        fgRenderView.layer.bounds = CGRect(origin: .zero, size: size)
     }
 
 }
