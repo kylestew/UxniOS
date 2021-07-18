@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         // wait to load app UI before executing ROM
-        let rom = Bundle.main.path(forResource: "bifurcan", ofType: "rom")!
+        let rom = Bundle.main.path(forResource: "polycat", ofType: "rom")!
 
         uxn.load(rom)
 
