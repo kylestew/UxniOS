@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGSize)screenSize;
 - (void)redraw;
 
-- (void)domouse:(CGPoint)position touchdown:(BOOL)touchdown;
+- (void)domouse:(CGPoint)position taps:(int)taps state:(int)state;
 
 @end
 

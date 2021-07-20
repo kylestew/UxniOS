@@ -88,27 +88,37 @@ static int clamp(int val, int min, int max) {
 
 #pragma mark - Input
 
-- (void)domouse:(CGPoint)position touchdown:(BOOL)touchdown {
+/* == Mouse ==
+ * 0x00 - vector
+ * 0x20 - x
+ * 0x40 - y
+ * 0x60 - state [mouse button]
+ * 0x70 - wheel (not implemented)
+ */
+- (void)domouse:(CGPoint)position taps:(int)taps state:(int)state {
     Uint16 x = clamp(position.x, 0, ppu.hor * 8 - 1);
     Uint16 y = clamp(position.y, 0, ppu.ver * 8 - 1);
 
     mempoke16(devmouse->dat, 0x2, x);
     mempoke16(devmouse->dat, 0x4, y);
 
-    /*
-    switch(event->button.button) {
-    case SDL_BUTTON_LEFT: flag = 0x01; break;
-    case SDL_BUTTON_RIGHT: flag = 0x10; break;
-    }
-     */
-
     Uint8 flag = 0x00;
-    if (touchdown) {
+    if (taps == 1) {
+        // tap - left click
+        flag = 0x01;
+    } else if (taps == 2) {
+        // two finger tap - right click
+        flag = 0x10;
+    }
+    if (state == 0) {
+        // touches began
         devmouse->dat[6] |= flag;
-    } else {
+    } else if (state == 1) {
+        // touches ended
         devmouse->dat[6] &= (~flag);
     }
 
+    // fire vector
     evaluxn(&uxn, mempeek16(devmouse->dat, 0));
 }
 

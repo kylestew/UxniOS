@@ -63,12 +63,18 @@ class ViewController: UIViewController {
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         guard sender.view != nil else { return }
 
-        if sender.state == .began {
-            let point = sender.location(in: sender.view)
-            uxn.domouse(point, touchdown: true)
-        } else if sender.state == .ended {
-            let point = sender.location(in: sender.view)
-            uxn.domouse(point, touchdown: false)
+        let point = sender.location(in: sender.view)
+        let taps = Int32(sender.numberOfTouches)
+
+        switch sender.state {
+        case .began:
+            uxn.domouse(point, taps: taps, state: 0)
+        case .ended:
+            uxn.domouse(point, taps: taps, state: 1)
+        case .changed:
+            uxn.domouse(point, taps: taps, state: -1)
+            break
+        default: break
         }
     }
 
